@@ -50,6 +50,7 @@ func showMenu() {
 func readCommand() int {
 	var command int
 	fmt.Scan(&command)
+	fmt.Println("")
 
 	return command
 }
@@ -68,6 +69,8 @@ func startMonitoring() {
 		time.Sleep(delay * time.Second)
 		fmt.Println("")
 	}
+
+	fmt.Println("")
 }
 
 func testApp(app string) {
