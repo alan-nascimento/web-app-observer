@@ -1,9 +1,12 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
+	"io"
 	"net/http"
 	"os"
+	"strings"
 	"time"
 )
 
@@ -58,7 +61,7 @@ func readCommand() int {
 func startMonitoring() {
 	fmt.Println("Monitoring...")
 
-	apps := []string{"https://random-status-code.herokuapp.com/", "https://golang.org/", "https://stackoverflow.com/"}
+	apps := readApps()
 
 	for i := 0; i < monitoring; i++ {
 		for i, app := range apps {
@@ -88,6 +91,30 @@ func testApp(app string) {
 	}
 }
 
-func readFile() {
+func readApps() []string {
+	var apps []string
 
+	file, err := os.Open("apps.txt")
+
+	if err != nil {
+		fmt.Println("Error:", err)
+		return nil
+	}
+
+	reader := bufio.NewReader(file)
+
+	for {
+		line, err := reader.ReadString('\n')
+
+		line = strings.TrimSpace(line)
+		apps = append(apps, line)
+
+		if err == io.EOF {
+			break
+		}
+	}
+
+	file.Close()
+
+	return apps
 }
