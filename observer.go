@@ -74,11 +74,20 @@ func startMonitoring() {
 }
 
 func testApp(app string) {
-	res, _ := http.Get(app)
+	res, err := http.Get(app)
+
+	if err != nil {
+		fmt.Println("Error:", err)
+		return
+	}
 
 	if res.StatusCode == 200 {
 		fmt.Println("Application:", app, "was successfully loaded!")
 	} else {
 		fmt.Println("Application:", app, "is having problems. Status code:", res.StatusCode)
 	}
+}
+
+func readFile() {
+
 }
