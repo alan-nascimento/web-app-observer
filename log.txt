@@ -1,0 +1,12 @@
+18/11/2020 20:46:14 - https://random-status-code.herokuapp.com/ - online: true
+18/11/2020 20:46:14 - https://golang.org/ - online: true
+18/11/2020 20:46:14 - https://stackoverflow.com/ - online: true
+18/11/2020 20:46:20 - https://random-status-code.herokuapp.com/ - online: true
+18/11/2020 20:46:20 - https://golang.org/ - online: true
+18/11/2020 20:46:20 - https://stackoverflow.com/ - online: true
+18/11/2020 20:46:26 - https://random-status-code.herokuapp.com/ - online: true
+18/11/2020 20:46:26 - https://golang.org/ - online: true
+18/11/2020 20:46:26 - https://stackoverflow.com/ - online: true
+18/11/2020 20:46:32 - https://random-status-code.herokuapp.com/ - online: false
+18/11/2020 20:46:32 - https://golang.org/ - online: true
+18/11/2020 20:46:32 - https://stackoverflow.com/ - online: true

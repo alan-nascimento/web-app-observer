@@ -4,8 +4,10 @@ import (
 	"bufio"
 	"fmt"
 	"io"
+	"io/ioutil"
 	"net/http"
 	"os"
+	"strconv"
 	"strings"
 	"time"
 )
@@ -25,7 +27,7 @@ func main() {
 		case 1:
 			startMonitoring()
 		case 2:
-			fmt.Println("Showing logs...")
+			showLogs()
 		case 0:
 			fmt.Println("Exiting")
 			os.Exit(0)
@@ -86,8 +88,10 @@ func testApp(app string) {
 
 	if res.StatusCode == 200 {
 		fmt.Println("Application:", app, "was successfully loaded!")
+		registryLog(app, true)
 	} else {
 		fmt.Println("Application:", app, "is having problems. Status code:", res.StatusCode)
+		registryLog(app, false)
 	}
 }
 
@@ -117,4 +121,27 @@ func readApps() []string {
 	file.Close()
 
 	return apps
+}
+
+func registryLog(app string, status bool) {
+	file, err := os.OpenFile("log.txt", os.O_CREATE|os.O_RDWR|os.O_APPEND, 0666)
+
+	if err != nil {
+		fmt.Println("Error:", err)
+		return
+	}
+
+	file.WriteString(time.Now().Format("02/01/2006 15:04:05") + " - " + app + " - online: " + strconv.FormatBool(status) + "\n")
+	file.Close()
+}
+
+func showLogs() {
+	file, err := ioutil.ReadFile("log.txt")
+
+	if err != nil {
+		fmt.Println("Error:", err)
+		return
+	}
+
+	fmt.Println(string(file))
 }
