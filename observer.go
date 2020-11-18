@@ -8,21 +8,24 @@ import (
 
 func main() {
 	showIntro()
-	showMenu()
 
-	command := readCommand()
+	for {
+		showMenu()
 
-	switch command {
-	case 1:
-		startMonitoring()
-	case 2:
-		fmt.Println("Showing logs...")
-	case 0:
-		fmt.Println("Exiting")
-		os.Exit(0)
-	default:
-		fmt.Println("Unknown command")
-		os.Exit(-1)
+		command := readCommand()
+
+		switch command {
+		case 1:
+			startMonitoring()
+		case 2:
+			fmt.Println("Showing logs...")
+		case 0:
+			fmt.Println("Exiting")
+			os.Exit(0)
+		default:
+			fmt.Println("Unknown command")
+			os.Exit(-1)
+		}
 	}
 }
 
