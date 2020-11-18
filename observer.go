@@ -53,12 +53,13 @@ func readCommand() int {
 func startMonitoring() {
 	fmt.Println("Monitoring...")
 
-	app := "https://random-status-code.herokuapp.com"
-	res, _ := http.Get(app)
+	apps := []string{"https://random-status-code.herokuapp.com/", "https://golang.org/", "https://stackoverflow.com/"}
+
+	res, _ := http.Get(apps[0])
 
 	if res.StatusCode == 200 {
-		fmt.Println("Application:", app, "was successfully loaded!")
+		fmt.Println("Application:", apps[0], "was successfully loaded!")
 	} else {
-		fmt.Println("Application:", app, "is having problems. Status code:", res.StatusCode)
+		fmt.Println("Application:", apps[0], "is having problems. Status code:", res.StatusCode)
 	}
 }
