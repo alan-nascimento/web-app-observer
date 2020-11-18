@@ -4,7 +4,11 @@ import (
 	"fmt"
 	"net/http"
 	"os"
+	"time"
 )
+
+const monitoring = 4
+const delay = 5
 
 func main() {
 	showIntro()
@@ -55,11 +59,23 @@ func startMonitoring() {
 
 	apps := []string{"https://random-status-code.herokuapp.com/", "https://golang.org/", "https://stackoverflow.com/"}
 
-	res, _ := http.Get(apps[0])
+	for i := 0; i < monitoring; i++ {
+		for i, app := range apps {
+			fmt.Println("Testing application", i, ":", app)
+			testApp(app)
+		}
+
+		time.Sleep(delay * time.Second)
+		fmt.Println("")
+	}
+}
+
+func testApp(app string) {
+	res, _ := http.Get(app)
 
 	if res.StatusCode == 200 {
-		fmt.Println("Application:", apps[0], "was successfully loaded!")
+		fmt.Println("Application:", app, "was successfully loaded!")
 	} else {
-		fmt.Println("Application:", apps[0], "is having problems. Status code:", res.StatusCode)
+		fmt.Println("Application:", app, "is having problems. Status code:", res.StatusCode)
 	}
 }
