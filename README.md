@@ -25,6 +25,6 @@ $ git clone https://github.com/alan-nascimento/web-app-observer.git
 $ go run observer.go
 ```
 
-3. Enjoy the monitoring!
+3. Select the options you want and enjoy the monitoring!
 
 Developed by **Alan Nascimento - [Github](https://github.com/alan-nascimento)** - **_Published in November of 2020_**.
