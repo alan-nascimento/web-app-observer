@@ -11,24 +11,20 @@ $ git >= v2.x
 $ go >= v1.x
 ```
 
-## Installation and Getting Started
+## Getting Started
 
-1. Clone this repository
-
-```
-$ git clone https://github.com/alan-nascimento/meli-product-finder.git
-```
-
-2. Install dependencies
+1. Clone this repository at the Go workspace:
 
 ```
-$ npm install
+$ git clone https://github.com/alan-nascimento/web-app-observer.git
 ```
 
-3. NOTE: The env is setted by `.env.development`. You can also create an `.env.local` file to set the environment variables.
-
-4. Start the local server
+2. At the `web-app-observer` folder, execute the command below:
 
 ```
-$ npm run dev
+$ go run observer.go
 ```
+
+3. Enjoy the monitoring!
+
+Developed by **Alan Nascimento - [Github](https://github.com/alan-nascimento)** - **_Published in November of 2020_**.
